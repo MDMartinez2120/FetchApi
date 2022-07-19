@@ -29,57 +29,90 @@ async function loadByBreed(breed){
 }
 
 function createSlideshow(images){
-    let currentPosition = 0;
     clearInterval(timer)
     clearTimeout(deleteFirstPhotoDelay)
 
     if (images.length > 1){
         document.getElementById('slideshow').innerHTML = `
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="${images[0]}" class="d-block w-100" alt="Doggo Image">
+              <img src="${images[0]}"  class="d-block w-100"  alt="...">
             </div>
+            <div class="carousel-item">
+              <img src="${images[1]}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="${images[2]}" class="d-block w-100" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
-    </div> 
     `
-    currentPosition += 2
-    if (images.length === 2) currentPosition = 0
-    timer = setInterval(nextSlide, 3000)
 
     }else {
         document.getElementById('slideshow').innerHTML = `
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="${images[0]}" class="d-block w-100" alt="Doggo Image">
+              <img src="${images[0]}" class="d-block w-100" alt="...">
             </div>
-        </div>
-    </div> 
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div> 
     `
     }
 
     document.getElementById('slideshow').innerHTML = `
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="${images[0]}" class="d-block w-100" alt="Doggo Image">
+              <img src="${images[0]}" class="d-block w-100" alt="...">
             </div>
+            <div class="carousel-item">
+              <img src="${images[1]}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="${images[2]}" class="d-block w-100" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
-    </div> 
     `
-    currentPosition += 2
-    timer = setInterval(nextSlide, 3000)
-
-    function nextSlide(){
-        document.getElementById('slideshow').insertAdjacentHTML('beforeend', `<img src="${images[currentPosition]}" class="d-block w-100" alt="Doggo Image">`)
-        deleteFirstPhotoDelay = setTimeout(function (){
-            document.querySelector('.carousel-item active').remove()
-        }, 1000)
-    }
-    if (currentPosition === 1 >= images.length){
-        currentPosition = 0
-    }else {
-        currentPosition++
-    }
 }
