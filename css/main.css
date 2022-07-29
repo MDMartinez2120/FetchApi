@@ -3,3 +3,32 @@ img {
     height: 100%;
     object-fit: cover;
 }
+
+@keyframes bounce {
+    0%, 20%, 60%, 100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+
+    40% {
+        -webkit-transform: translateY(-20px);
+        transform: translateY(-20px);
+    }
+
+    80% {
+        -webkit-transform: translateY(-10px);
+        transform: translateY(-10px);
+    }
+}
+
+img:hover {
+    animation: bounce 1s;
+}
+
+body {
+    background: url('https://images.pexels.com/photos/406014/pexels-photo-406014.jpeg')no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}

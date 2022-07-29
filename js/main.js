@@ -3,20 +3,8 @@ async function start(){
    const res = await fetch('https://dog.ceo/api/breeds/list/all')
    const data = await res.json();
    createBreedList(data.message);
-    console.log(res);
 }
 start();
-
-document.addEventListener('load', loadRandomImage)
-//RANDOM DOG IMAGE WHEN PAGE IS LOADED\\
-async function loadRandomImage(images){
-    const res = fetch('https://dog.ceo/api/breeds/image/random');
-    const data = document.getElementById('slideshow').innerHTML = `
-        <div class="card" style="width: 18rem;">
-        <img src="${images[0]}" class="card-img-top" alt="dog image">
-        </div>
-    `
-}
 
 //CREATES FUNCTIONAL DROPDOWN FOR BREED SEARCH\\
 function createBreedList(breedList){
@@ -53,15 +41,36 @@ function createDogImage(images){
     <div class="card" style="width: 18rem;">
         <img src="${images[2]}" class="card-img-top" alt="dog image">
     </div>
+    <div class="card" style="width: 18rem;">
+        <img src="${images[3]}" class="card-img-top" alt="dog image">
+    </div>
+    <div class="card" style="width: 18rem;">
+        <img src="${images[4]}" class="card-img-top" alt="dog image">
+    </div>
+    <div class="card" style="width: 18rem;">
+        <img src="${images[5]}" class="card-img-top" alt="dog image">
+    </div>
+    <div class="card" style="width: 18rem;">
+        <img src="${images[6]}" class="card-img-top" alt="dog image">
+    </div>
+    <div class="card" style="width: 18rem;">
+        <img src="${images[7]}" class="card-img-top" alt="dog image">
+    </div>
     `
-
-    }else {
+    }if (images.length < 3){
         document.getElementById('slideshow').innerHTML = `
     <div class="card" style="width: 18rem;">
         <img src="${images[0]}" class="card-img-top" alt="dog image">
-    </div>
-    `
+     </div>
+     `
     }
+        // else {
+    //     document.getElementById('slideshow').innerHTML = `
+    // <div class="card" style="width: 18rem;">
+    //     <img src="${images[0]}" class="card-img-top" alt="dog image">
+    // </div>
+    // `
+    // }
 
     document.getElementById('slideshow').innerHTML = `
     <div class="card" style="width: 18rem;">
@@ -73,5 +82,28 @@ function createDogImage(images){
     <div class="card" style="width: 18rem;">
         <img src="${images[2]}" class="card-img-top" alt="dog image">
     </div>
+    <div class="card" style="width: 18rem;">
+        <img src="${images[3]}" class="card-img-top" alt="dog image">
+    </div>
+    <div class="card" style="width: 18rem;">
+        <img src="${images[4]}" class="card-img-top" alt="dog image">
+    </div>
+    <div class="card" style="width: 18rem;">
+        <img src="${images[5]}" class="card-img-top" alt="dog image">
+    </div>
+    <div class="card" style="width: 18rem;">
+        <img src="${images[6]}" class="card-img-top" alt="dog image">
+    </div>
+    <div class="card" style="width: 18rem;">
+        <img src="${images[7]}" class="card-img-top" alt="dog image">
+    </div>
     `
 }
+
+//REFRESH BUTTON\\
+const refreshButton = document.getElementById('fetch');
+const refreshPage = () => {
+    location.reload();
+}
+
+refreshButton.addEventListener('click', refreshPage);
