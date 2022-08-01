@@ -30,47 +30,47 @@ async function loadByBreed(breed){
 //CREATES DOG IMAGE OUTPUT\\
 function createDogImage(images){
 
-    if (images.length > 1){
-        document.getElementById('slideshow').innerHTML = `
-    <div class="card" style="width: 18rem;">
-        <img src="${images[0]}" class="card-img-top" alt="dog image">
-    </div>
-    <div class="card" style="width: 18rem;">
-        <img src="${images[1]}" class="card-img-top" alt="dog image">
-    </div>
-    <div class="card" style="width: 18rem;">
-        <img src="${images[2]}" class="card-img-top" alt="dog image">
-    </div>
-    <div class="card" style="width: 18rem;">
-        <img src="${images[3]}" class="card-img-top" alt="dog image">
-    </div>
-    <div class="card" style="width: 18rem;">
-        <img src="${images[4]}" class="card-img-top" alt="dog image">
-    </div>
-    <div class="card" style="width: 18rem;">
-        <img src="${images[5]}" class="card-img-top" alt="dog image">
-    </div>
-    <div class="card" style="width: 18rem;">
-        <img src="${images[6]}" class="card-img-top" alt="dog image">
-    </div>
-    <div class="card" style="width: 18rem;">
-        <img src="${images[7]}" class="card-img-top" alt="dog image">
-    </div>
-    `
-    }if (images.length < 3){
-        document.getElementById('slideshow').innerHTML = `
-    <div class="card" style="width: 18rem;">
-        <img src="${images[0]}" class="card-img-top" alt="dog image">
-     </div>
-     `
-    }
-        // else {
+    // if (images.length > 1){
     //     document.getElementById('slideshow').innerHTML = `
     // <div class="card" style="width: 18rem;">
     //     <img src="${images[0]}" class="card-img-top" alt="dog image">
     // </div>
+    // <div class="card" style="width: 18rem;">
+    //     <img src="${images[1]}" class="card-img-top" alt="dog image">
+    // </div>
+    // <div class="card" style="width: 18rem;">
+    //     <img src="${images[2]}" class="card-img-top" alt="dog image">
+    // </div>
+    // <div class="card" style="width: 18rem;">
+    //     <img src="${images[3]}" class="card-img-top" alt="dog image">
+    // </div>
+    // <div class="card" style="width: 18rem;">
+    //     <img src="${images[4]}" class="card-img-top" alt="dog image">
+    // </div>
+    // <div class="card" style="width: 18rem;">
+    //     <img src="${images[5]}" class="card-img-top" alt="dog image">
+    // </div>
+    // <div class="card" style="width: 18rem;">
+    //     <img src="${images[6]}" class="card-img-top" alt="dog image">
+    // </div>
+    // <div class="card" style="width: 18rem;">
+    //     <img src="${images[7]}" class="card-img-top" alt="dog image">
+    // </div>
     // `
+    // }if (images.length < 3){
+    //     document.getElementById('slideshow').innerHTML = `
+    // <div class="card" style="width: 18rem;">
+    //     <img src="${images[0]}" class="card-img-top" alt="dog image">
+    //  </div>
+    //  `
     // }
+    //     // else {
+    // //     document.getElementById('slideshow').innerHTML = `
+    // // <div class="card" style="width: 18rem;">
+    // //     <img src="${images[0]}" class="card-img-top" alt="dog image">
+    // // </div>
+    // // `
+    // // }
 
     document.getElementById('slideshow').innerHTML = `
     <div class="card" style="width: 18rem;">
@@ -96,6 +96,28 @@ function createDogImage(images){
     </div>
     <div class="card" style="width: 18rem;">
         <img src="${images[7]}" class="card-img-top" alt="dog image">
+    </div>
+    `
+}
+
+//RANDOM DOG\\
+async function randoDog(){
+    const res = await fetch('https://dog.ceo/api/breeds/image/random');
+    const data = await res.json();
+    loadRandoDog(data.message);
+}
+randoDog();
+
+async function loadRandoDog(){
+        const res = await fetch('https://dog.ceo/api/breeds/image/random');
+        const data = await res.json();
+        createRandomDogImage(data.message);
+}
+
+function createRandomDogImage(images){
+    document.getElementById('randomDog').innerHTML = `
+    <div class="card" style="width: 18rem;">
+        <img src="${images[1]}" class="card-img-top" alt="dog image">
     </div>
     `
 }
